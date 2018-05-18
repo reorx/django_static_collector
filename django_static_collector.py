@@ -11,7 +11,7 @@ from django.conf import settings
 from django.core.management import execute_from_command_line
 
 
-__version__ = '0.1.0'
+__version__ = '0.2.0'
 
 # TODO
 # - [ ] support OPTIONS as `./manage.py collectstatic [OPTIONS]`
@@ -47,6 +47,7 @@ def main():
     app_settings = importlib.import_module(app_settings_module)
 
     config = dict(
+        TITLE=getattr(app_settings, 'TITLE', 'default title'),
         DEBUG=True,
         SECRET_KEY='A-random-secret-key!',
     )
